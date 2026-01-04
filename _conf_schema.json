@@ -17,6 +17,24 @@
         "default": -20,
         "hint": "当好感度低于该值时可能触发拉黑"
     },
+    "auto_blacklist_clean": {
+        "description": "是否启用自动清理被自动拉黑的用户",
+        "type": "bool",
+        "default": true,
+        "hint": "开启后会定期自动移除满足条件的自动拉黑用户"
+    },
+    "auto_blacklist_time": {
+        "description": "自动拉黑用户保留时间（小时）",
+        "type": "int",
+        "default": 24,
+        "hint": "自动拉黑的用户经过该时间后会自动移出黑名单"
+    },
+    "blacklist_mute_duration": {
+        "description": "自动拉黑用户时的禁言时长（秒）",
+        "type": "int",
+        "default": 600,
+        "hint": "单位为秒，设置为0则禁用自动禁言功能。机器人必须是群管理员才能执行此操作。"
+    },
     "min_favor_value": {
         "description": "最低好感度值",
         "type": "int",
@@ -40,18 +58,6 @@
         "type": "list",
         "default": ["【.*?】", "\\[好感度.*?\\]"],
         "hint": "使用正则表达式匹配要删除的内容"
-    }, 
-    "auto_blacklist_clean": {
-        "description": "是否启用自动清理被自动拉黑的用户",
-        "type": "bool",
-        "default": true,
-        "hint": "开启后会定期自动移除满足条件的自动拉黑用户"
-    },
-    "auto_blacklist_time": {
-        "description": "自动拉黑用户保留时间（小时）",
-        "type": "int",
-        "default": 24,
-        "hint": "自动拉黑的用户经过该时间后会自动移出黑名单"
     },
     "session_based_favor": {
         "description": "是否启用会话独立的好感度系统",
@@ -88,5 +94,29 @@
         "type": "int",
         "default": 1,
         "hint": "每次自动减少时减少的计数器数值"
+    },
+    "enable_favor_recovery": {
+        "description": "【新】是否启用负好感度自动恢复功能",
+        "type": "bool",
+        "default": false,
+        "hint": "开启后，在指定群聊中，用户的负好感度会随时间缓慢恢复到0"
+    },
+    "favor_recovery_group_ids": {
+        "description": "【新】启用好感度恢复的群聊ID列表",
+        "type": "list",
+        "default": [],
+        "hint": "只有在此列表中的群聊才会启用好感度自动恢复功能。需要启用'会话独立的好感度系统'"
+    },
+    "favor_recovery_interval_hours": {
+        "description": "【新】好感度恢复间隔（小时）",
+        "type": "int",
+        "default": 24,
+        "hint": "每隔多少小时恢复一次好感度"
+    },
+    "favor_recovery_amount": {
+        "description": "【新】每次恢复的好感度点数",
+        "type": "int",
+        "default": 1,
+        "hint": "每次自动恢复时增加的好感度数值"
     }
 }
